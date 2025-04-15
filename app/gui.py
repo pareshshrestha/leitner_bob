@@ -260,12 +260,16 @@ class LeitnerApp:
 		messagebox.showinfo('Info', f'You got {total_correct} questions right out of {question_num} questions.')
 
 		#storing the user activity
+		logger.debug('Updating the userdata regarding quiz session')
 		self.userdata['session_data'].append((total_correct/question_num)*100)
 		#TODO: allow the user to view all the questions again whether right or wrong
 
 		#removing the default created 40 session history
 		if self.userdata['session_data'][0] == 0:
 			self.userdata['session_data'].pop(0)
+
+		#Updating the graph with new data
+		self.update_graph()
 
 	def create_quickframe(self, root, database, box):
 		'''
@@ -335,5 +339,16 @@ class LeitnerApp:
 		self.root.quit()	#quitting the app
 		self.root.destroy()	#deleting the window 
 
+	def update_graph(self):
+		'''
+		Updates the graph with the latest user data.
+		Clears the graphframe and redraws the graph with current data.
+		'''
+		logger.debug('Updating the graph with latest user data')
 
+		#Clear the current contents of graphframe
+		for widget in self.graphframe.winfo_children():
+			widget.destroy()
 
+		#Recreate the graph with updated data
+		create_graphframe(self.graphframe, self.userdata)

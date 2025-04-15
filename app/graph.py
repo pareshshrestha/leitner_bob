@@ -23,6 +23,7 @@ def create_graphframe(root, userdata):
 	except KeyError:
 		userdata['session_data'] = [0]*40
 		session_data = userdata['session_data']
+		logger.warning('session_data not found in userdata. Initializing 40 zero values')
 
 	#Taking only the last 40 data points(last 40 sessions), if more than 40 exist, to display in the graph
 	if len(session_data) >= 40:
@@ -51,3 +52,5 @@ def create_graphframe(root, userdata):
 	canvas = FigureCanvasTkAgg(fig, master=root)
 	canvas.draw()
 	canvas.get_tk_widget().pack(fill='both', expand=True)
+
+	return canvas #Return the canvas so it can be updated later
