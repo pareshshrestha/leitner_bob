@@ -98,7 +98,7 @@ class LeitnerApp:
 		#creating and implementing frame that shows user's sessiondata as a graph
 		self.graphframe = Frame(self.root, bd=5, relief=RIDGE, width=1330, height=120, bg='white')
 		self.graphframe.place(x=15, y=530)
-		create_graphframe(self.graphframe, self.userdata)
+		create_graphframe(self.graphframe, self.userdata) #calling method to implement the UI and logic
 
 		#creating and implementing the quick access frame
 		#holds quick links to frequently used functions
@@ -109,7 +109,7 @@ class LeitnerApp:
 		#creating and implementing frame that holds a pomodoro timer clock 
 		self.pomodoroframe = Frame(self.root, bd=5, relief=RIDGE, width=200, height=500, bg='white')
 		self.pomodoroframe.place(x=1150, y=20)
-		self.pomodoro = PomodoroTimer(self.pomodoroframe, self.userdata)
+		self.pomodoro = PomodoroTimer(self.pomodoroframe, self.userdata)	#calling method to implement the UI and logic
 
 		logger.info('Creation and intialization of LeitnerApp class complete')
 
