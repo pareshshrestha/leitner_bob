@@ -1,0 +1,25 @@
+# Virtual environment 
+boxenv/
+
+#Log files
+logs/
+
+#User data
+data/
+
+#pythong bytecode 
+__pycache__/
+*.py[cod]
+*py.class
+
+#Sublime settings
+*.sublime-project
+*.sublime-workspace
+
+#Test cache
+.pytest_cache/
+
+#personal files 
+plan.txt
+user.enc
+secret.key
