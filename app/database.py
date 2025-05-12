@@ -53,8 +53,13 @@ class Database:
 		'''
 		try:
 			base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', base)
+			base_dir = os.path.abspath(base_dir)
+			
+			#create the directory if it doesn't exist
+			os.mkdirs(base_dir, exist_ok=True)
+			
 			logger.debug(f'Base path determined: {base_dir}')
-			return os.path.abspath(base_dir)
+			return base_dir
 		except Exception as e:
 			logger.error(f'Failed to determine base path: {str(e)}')
 			raise
